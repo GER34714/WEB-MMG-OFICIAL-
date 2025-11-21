@@ -1,4 +1,4 @@
-// Fondo de partículas
+// Fondo partículas
 particlesJS('particles-js', {
   particles:{
     number:{value:70},
@@ -10,40 +10,54 @@ particlesJS('particles-js', {
   }
 });
 
-// ===================== ARTISTAS =====================
+// ===================== ARTISTAS (CARRUSEL) =====================
 fetch("artistas.json")
 .then(r => r.json())
 .then(lista => {
 
-  const gridArtistas = document.getElementById("artistas-grid");
-  const galeriaArtistas = document.getElementById("galeria-artistas");
+  const container = document.getElementById("artistas-container");
 
   lista.forEach(a => {
 
-    // Imagen del artista o logo MMG si falta
+    // Si no tiene imagen → usar logo MMG
     const foto = (a.img && a.img.length > 5)
       ? a.img
       : "https://iili.io/KtXqRHJ.md.png";
 
-    // ----- TARJETA DE CATÁLOGO (con descripción) -----
-    const card = document.createElement("div");
-    card.className = "card-artista";
-    card.innerHTML = `
-      <img src="${foto}">
-      <h3>${a.nombre}</h3>
-      <p>${a.descripcion}</p>
-    `;
-    gridArtistas.appendChild(card);
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
 
-    // ----- GALERÍA DE ARTISTAS (solo foto) -----
-    const img = document.createElement("img");
-    img.src = foto;
-    galeriaArtistas.appendChild(img);
+    slide.innerHTML = `
+      <div class="card-artista">
+        <img src="${foto}">
+        <h3>${a.nombre}</h3>
+        <p>${a.descripcion}</p>
+      </div>
+    `;
+
+    container.appendChild(slide);
+  });
+
+  // Inicializar Swiper
+  new Swiper('.artistas-swiper', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: { delay: 4000 },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
+    }
   });
 
 });
 
-// ===================== GALERÍA EXTRA =====================
+// ===================== GALERÍA EXTRA (SOLO FOTOS) =====================
 fetch("galeria.json")
 .then(r => r.json())
 .then(fotos => {
