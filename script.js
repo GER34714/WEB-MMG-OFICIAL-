@@ -20,12 +20,12 @@ fetch("artistas.json")
 
   lista.forEach(a => {
 
-    // Si no tiene imagen → usar logo MMG
-    const foto = a.img && a.img.length > 5
+    // Imagen del artista o logo MMG si falta
+    const foto = (a.img && a.img.length > 5)
       ? a.img
       : "https://iili.io/KtXqRHJ.md.png";
 
-    // ----- Catálogo -----
+    // ----- TARJETA DE CATÁLOGO (con descripción) -----
     const card = document.createElement("div");
     card.className = "card-artista";
     card.innerHTML = `
@@ -35,11 +35,10 @@ fetch("artistas.json")
     `;
     gridArtistas.appendChild(card);
 
-    // ----- Galería de Artistas -----
+    // ----- GALERÍA DE ARTISTAS (solo foto) -----
     const img = document.createElement("img");
     img.src = foto;
     galeriaArtistas.appendChild(img);
-
   });
 
 });
