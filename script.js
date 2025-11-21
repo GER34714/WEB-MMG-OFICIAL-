@@ -1,38 +1,80 @@
-// ================= ARTISTAS ==================
-fetch("artistas.json")
-  .then(res => res.json())
-  .then(lista => {
-    const cont = document.getElementById("contenedor-artistas");
+// Fondo partículas
+particlesJS('particles-js', {
+  particles:{
+    number:{value:70},
+    color:{value:["#d4af37","#b97cff"]},
+    opacity:{value:0.5,random:true},
+    size:{value:3,random:true},
+    move:{enable:true,speed:1.4},
+    line_linked:{enable:false}
+  }
+});
 
-    cont.innerHTML = lista.map(art => `
-      <div class="card-artista">
-        <img src="${art.img || 'https://iili.io/H59TYva.png'}">
-        <h3>${art.nombre}</h3>
-        <p>${art.descripcion}</p>
-        <a class="btn-contratar" href="https://wa.me/1138120000?text=Quiero contratar a ${encodeURIComponent(art.nombre)}">
-          Contratar Artista
-        </a>
-      </div>
-    `).join("");
-  });
-
-// ================= GALERÍA ==================
-fetch("galeria.json")
-  .then(res => res.json())
-  .then(fotos => {
-
-    const b1 = fotos.slice(0, 30);
-    const b2 = fotos.slice(30, 60);
-    const b3 = fotos.slice(60, 90);
-    const b4 = fotos.slice(90);
-
-    renderG("galeria1", b1);
-    renderG("galeria2", b2);
-    renderG("galeria3", b3);
-    renderG("galeria4", b4);
-  });
-
-function renderG(id, arr){
-  document.getElementById(id).innerHTML =
-    arr.map(f => `<img src="${f}" loading="lazy">`).join("");
+// ===================== CONTRATAR =====================
+function contratar(nombre){
+  const numero = "5491157343551";
+  const mensaje = encodeURIComponent(`Hola 👋, quiero contratar a ${nombre} (MMG | Representante de Artistas).`);
+  window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
 }
+
+// ===================== ARTISTAS (CARRUSEL) =====================
+fetch("artistas.json")
+.then(r => r.json())
+.then(lista => {
+
+  const container = document.getElementById("artistas-container");
+
+  lista.forEach(a => {
+
+    const foto = (a.img && a.img.length > 5)
+      ? a.img
+      : "https://iili.io/KtXqRHJ.md.png";
+
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
+
+    slide.innerHTML = `
+      <div class="card-artista">
+        <img src="${foto}">
+        <h3>${a.nombre}</h3>
+        <p>${a.descripcion}</p>
+
+        <button class="btn-contratar" onclick="contratar('${a.nombre}')">
+          🎤 Contratar Artista
+        </button>
+      </div>
+    `;
+
+    container.appendChild(slide);
+  });
+
+  new Swiper('.artistas-swiper', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: { delay: 3500 },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+      320: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
+    }
+  });
+
+});
+
+// ===================== GALERÍA EXTRA (SOLO FOTOS) =====================
+fetch("galeria.json")
+.then(r => r.json())
+.then(fotos => {
+  const galeriaExtras = document.getElementById("galeria-extras");
+
+  fotos.forEach(link => {
+    const img = document.createElement("img");
+    img.src = link;
+    galeriaExtras.appendChild(img);
+  });
+});
