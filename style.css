@@ -10,7 +10,7 @@ body{
   color:#fff;
 }
 
-/* Fondo partículas */
+/* Partículas */
 #particles-js{
   position:fixed;
   top:0;left:0;
@@ -21,7 +21,20 @@ body{
 /* HERO */
 .hero{text-align:center;padding:60px 20px;}
 .logo{width:180px;filter:drop-shadow(0 0 30px #b97cff);}
-.hero h1{margin-top:15px;text-shadow:0 0 20px #b97cff,0 0 40px #d4af37;}
+
+.hero-title{
+  margin-top:15px;
+  font-size:1.8rem;
+  text-shadow:0 0 25px #b97cff,0 0 45px #d4af37;
+  font-weight:700;
+}
+
+.hero-sub{
+  margin-top:10px;
+  font-size:1rem;
+  opacity:.9;
+  text-shadow:0 0 10px #b97cff;
+}
 
 .menu{
   margin-top:25px;
@@ -50,8 +63,7 @@ body{
   text-shadow:0 0 15px #b97cff,0 0 25px #d4af37;
 }
 
-/* ====================== ARTISTAS CARD ====================== */
-
+/* ================= ARTISTAS ================= */
 .card-artista{
   background:rgba(0,0,0,0.55);
   padding:18px;
@@ -61,31 +73,22 @@ body{
   text-align:center;
 }
 
-.card-artista:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 35px rgba(212,175,55,0.7);
-}
-
-/* FOTO COMPLETA SIN ZOOM */
 .card-artista img{
   width:100%;
   height:230px;
-  object-fit:contain;      /* ← SIN ZOOM */
-  object-position:center;  /* ← CENTRADA */
-  background:#000;         /* ← FUNDO LIMPIO DETRÁS */
+  object-fit:contain;
+  object-position:center;
+  background:#000;
   border-radius:12px;
   margin-bottom:20px;
-  box-shadow:0 0 15px rgba(185,124,255,0.3);
 }
 
-/* Nombre */
 .card-artista h3{
   margin-bottom:12px;
   font-size:1.2rem;
   text-shadow:0 0 10px #b97cff;
 }
 
-/* Descripción */
 .card-artista p{
   font-size:0.95rem;
   line-height:1.45em;
@@ -93,7 +96,7 @@ body{
   color:#eee;
 }
 
-/* BOTÓN CONTRATAR */
+/* BOTÓN */
 .btn-contratar{
   background:linear-gradient(90deg,#d4af37,#ffcc70,#d4af37);
   background-size:300% 300%;
@@ -107,23 +110,45 @@ body{
   display:block;
   text-align:center;
   box-shadow:0 0 25px rgba(212,175,55,0.7);
-  animation:glowBtn 3s infinite alternate;
-}
-.btn-contratar:hover{
-  transform:scale(1.07);
-  background-position:right center;
 }
 
-@keyframes glowBtn{
-  0%{box-shadow:0 0 20px #b97cff;}
-  100%{box-shadow:0 0 35px #ffcc70;}
+/* ============= INSTAGRAM CTA ============= */
+.insta-cta{
+  display:flex;
+  justify-content:center;
+}
+
+.btn-instagram{
+  background:linear-gradient(90deg,#b97cff,#d4af37,#b97cff);
+  padding:15px 28px;
+  border-radius:40px;
+  color:white;
+  font-size:1.1rem;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 30px rgba(185,124,255,0.6);
+  transition:.3s;
+}
+
+.btn-instagram:hover{
+  transform:scale(1.07);
+  box-shadow:0 0 45px rgba(212,175,55,0.8);
 }
 
 /* ================= GALERÍA ================= */
+.galeria-box{
+  background:rgba(0,0,0,0.40);
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 0 25px rgba(185,124,255,0.5);
+  width:90%;
+  margin:auto;
+  border:1px solid rgba(212,175,55,0.35);
+}
 
 .subtitulo-galeria{
   font-size:1.4rem;
-  margin:30px 0 15px;
+  margin:15px 0 25px;
   text-shadow:0 0 10px #b97cff,0 0 15px #d4af37;
 }
 
@@ -140,57 +165,27 @@ body{
   transition:.3s;
 }
 
-.grid-galeria img:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 40px rgba(212,175,55,0.8);
+.galeria-botones{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
 }
 
-/* ================= OTROS ================= */
-
-.youtube{
-  width:100%;
-  height:350px;
-  border-radius:15px;
-  box-shadow:0 0 20px rgba(185,124,255,0.6);
-}
-
-.servicios-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-
-.serv-box{
-  background:rgba(0,0,0,0.5);
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 0 15px #b97cff;
-}
-
-.sponsors-box,
-.agenda-box,
-.insta-box{
-  background:rgba(0,0,0,0.5);
-  padding:25px;
-  border-radius:15px;
-  width:90%;
-  margin:auto;
-  box-shadow:0 0 20px rgba(185,124,255,0.5);
-}
-
-/* FOOTER */
+/* Footer */
 footer{
   margin-top:60px;
   text-align:center;
   padding:30px;
   background:rgba(0,0,0,0.7);
 }
+
 .firma-ciborg{
   color:#00ffff;
   text-shadow:0 0 10px #00ffff;
 }
 
-/* WHATSAPP */
+/* WhatsApp */
 .whatsapp{
   position:fixed;
   bottom:25px;
@@ -201,6 +196,4 @@ footer{
   display:flex;
   justify-content:center;
   align-items:center;
-  box-shadow:0 0 20px rgba(0,0,0,0.6);
 }
-.whatsapp img{width:40px;height:40px;}
