@@ -1,237 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LyG Servicios Integrales</title>
-<link rel="icon" type="image/png" href="https://iili.io/JKF6M1S.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMG™ | Representante de Artistas</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #111;
-  color: #fff;
-  scroll-behavior: smooth;
-}
-* { box-sizing: border-box; }
-
-/* ---------------- NAV ---------------- */
-nav {
-  width: 100%;
-  padding: 15px 25px;
-  background: #000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0; left: 0;
-  z-index: 1000;
-}
-nav h1 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 700;
-  color: #f39c12;
-}
-nav ul {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-nav a {
-  text-decoration: none;
-  color: #fff;
-}
-nav a:hover { color: #f39c12; }
-
-.menu-btn {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-}
-@media (max-width:768px){
-  nav ul{
-    display:none;
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#000;
-    flex-direction:column;
-    text-align:center;
-    padding:20px 0;
-  }
-  nav ul.show{display:flex;}
-  .menu-btn{display:block;}
-}
-
-/* ---------------- HERO ---------------- */
-.hero {
-  height: 95vh;
-  background: url("https://iili.io/f7VuJ8x.jpg") center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-  position: relative;
-}
-.hero::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.65);
-}
-.hero * { position: relative; }
-
-.hero img {
-  max-width: 320px;
-  width: 80%;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 18px;
-  margin-bottom: 25px;
-}
-
-.btn-main {
-  padding: 12px 22px;
-  background: #f39c12;
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 6px;
-}
-
-/* ---------------- SECCIONES ---------------- */
-section {
-  padding: 70px 20px;
-  text-align: center;
-}
-h3 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #f39c12;
-}
-
-/* ---------------- SERVICIOS ---------------- */
-.servicios {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  gap: 20px;
-  margin-top: 40px;
-}
-.card {
-  background: #1c1c1c;
-  padding: 25px;
-  border-radius: 10px;
-  border: 1px solid #333;
-}
-
-/* ---------------- GALERÍA ---------------- */
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  gap: 15px;
-  margin-top: 40px;
-}
-.galeria img {
-  width: 100%;
-  border-radius: 10px;
-  height: 180px;
-  object-fit: cover;
-}
-
-/* ---------------- FOOTER ---------------- */
-footer {
-  padding: 20px;
-  background: #000;
-  text-align: center;
-  font-size: 14px;
-  color: #bbb;
-}
-
-/* ---------------- WHATSAPP ---------------- */
-.wsp-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  padding: 12px 14px;
-  border-radius: 50%;
-  font-size: 22px;
-  text-decoration: none;
-  color: #fff;
-  z-index: 999;
-}
-</style>
+  <link rel="icon" type="image/png" href="https://iili.io/KtXqRHJ.md.png" />
+  <meta name="theme-color" content="#b97cff">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div id="particles-js"></div>
 
-<nav>
-  <h1>LyG</h1>
-  <span class="menu-btn" onclick="toggleMenu()">☰</span>
-  <ul id="menu">
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#galeria">Trabajos</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
+  <header>
+    <img src="https://iili.io/KtXqRHJ.md.png" alt="MMG Logo">
+    <h1>MMG™ | Contrataciones Oficiales de la Movida Tropical</h1>
+  </header>
 
-<section class="hero" id="inicio">
-  <img src="https://iili.io/a05fc763-7cdc-4d19-81df-0fce341b4c87.png" alt="LyG Servicios Integrales">
-  <p>Construcción · Refacciones · Pintura · Plomería · Electricidad</p>
-  <a class="btn-main" href="https://wa.me/5491134567890" target="_blank">📞 Pedir presupuesto</a>
-</section>
+  <!-- Carrusel Rockola -->
+  <section class="artistas-wrapper">
+    <div class="swiper">
+      <div class="swiper-wrapper" id="artistas-container"></div>
 
-<section id="servicios">
-  <h3>Servicios</h3>
-  <div class="servicios">
-    <div class="card"><strong>Albañilería</strong><p>Construcciones y refacciones.</p></div>
-    <div class="card"><strong>Contrapisos</strong><p>Nivelaciones profesionales.</p></div>
-    <div class="card"><strong>Pintura</strong><p>Interior y exterior.</p></div>
-    <div class="card"><strong>Durlock</strong><p>Tabiques y cielorrasos.</p></div>
-    <div class="card"><strong>Plomería</strong><p>Instalaciones y reparaciones.</p></div>
-    <div class="card"><strong>Electricidad</strong><p>Mantenimiento general.</p></div>
-  </div>
-</section>
+      <!-- Botones -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
 
-<section id="galeria">
-  <h3>Trabajos Realizados</h3>
-  <div class="galeria">
-    <img src="https://iili.io/JKF6pwb.jpg">
-    <img src="https://iili.io/JKF68tx.jpg">
-    <img src="https://iili.io/JKF6tHG.jpg">
-    <img src="https://iili.io/JKF6mhJ.jpg">
-    <img src="https://iili.io/JKF6Qru.jpg">
-    <img src="https://iili.io/JKF6qBf.jpg">
-  </div>
-</section>
+  <!-- SEGUINOS EN INSTAGRAM -->
+  <section class="instagram-section">
+    <h2>📸 Seguinos en Instagram</h2>
+    <a href="https://www.instagram.com/managermusicgrup1?igsh=MWc2NmFxbDBqZnk1MQ==" target="_blank" class="instagram-link">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      <span>@managermusicgrup1</span>
+    </a>
+  </section>
 
-<section id="contacto">
-  <h3>Contacto</h3>
-  <p>Contanos tu idea y armamos tu presupuesto.</p>
-  <p><a style="color:#f39c12" href="https://wa.me/5491134567890" target="_blank">Enviar WhatsApp</a></p>
-</section>
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2025 MMG Manager Music Group™ · sitio web
+      Creado y diseñado por 
+      <a href="https://ciborg347.onrender.com" target="_blank" class="firma-ciborg">Ciborg 347™</a>
+    </p>
+  </footer>
 
-<footer>
-  © 2025 · LyG Servicios Integrales
-</footer>
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/5491157343551?text=Hola!%20Quiero%20más%20información%20sobre%20los%20artistas%20de%20MMG"
+     class="btn-whatsapp" target="_blank" aria-label="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
-<a class="wsp-btn" href="https://wa.me/5491134567890" target="_blank">💬</a>
-
-<script>
-function toggleMenu(){
-  document.getElementById("menu").classList.toggle("show");
-}
-</script>
-
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
