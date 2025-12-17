@@ -1,6 +1,3 @@
-// script.js
-
-// Partículas
 particlesJS('particles-js', {
   particles:{
     number:{value:70},
@@ -12,79 +9,134 @@ particlesJS('particles-js', {
   }
 });
 
-// CONTRATAR
 function contratar(nombre){
   const numero = "5491157343551";
   const mensaje = encodeURIComponent(`Hola 👋, quiero contratar a ${nombre} (MMG | Representante de Artistas).`);
   window.open(`https://wa.me/${numero}?text=${mensaje}`, "_blank");
 }
 
-// ARTISTAS
+function normalizar(txt){
+  return txt.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
+const DESTACADOS = [
+  "damy levante",
+  "delro",
+  "los creadores",
+  "dario el angel del amor",
+  "axel flp",
+  "kevin quiroz",
+  "franco flow 999",
+  "tomy lp"
+].map(normalizar);
+
+/* ================= ARTISTAS ================= */
+
 fetch("artistas.json")
 .then(r => r.json())
 .then(lista => {
-  const container = document.getElementById("artistas-container");
+
+  const contDest = document.getElementById("destacados-container");
+  const contCat  = document.getElementById("artistas-container");
+
+  const destacados = [];
+  const catalogo = [];
 
   lista.forEach(a => {
+    if (DESTACADOS.includes(normalizar(a.nombre))) {
+      destacados.push(a);
+    } else {
+      catalogo.push(a);
+    }
+  });
+
+  function crearSlide(a){
     const foto = a.img && a.img.length > 5 ? a.img : "https://iili.io/KtXqRHJ.md.png";
-
-    const slide = document.createElement("div");
-    slide.className = "swiper-slide";
-
-    slide.innerHTML = `
+    return `
       <div class="card-artista">
         <img src="${foto}">
         <h3>${a.nombre}</h3>
         <p>${a.descripcion}</p>
-        <button class="btn-contratar" onclick="contratar('${a.nombre}')">🎤 Contratar Artista</button>
+        <button class="btn-contratar" onclick="contratar('${a.nombre.replace(/'/g,"\\'")}')">
+          🎤 Contratar Artista
+        </button>
       </div>
     `;
+  }
 
-    container.appendChild(slide);
+  destacados.forEach(a => {
+    const d = document.createElement("div");
+    d.className = "swiper-slide";
+    d.innerHTML = crearSlide(a);
+    contDest.appendChild(d);
   });
 
-  new Swiper('.artistas-swiper', {
+  catalogo.forEach(a => {
+    const d = document.createElement("div");
+    d.className = "swiper-slide";
+    d.innerHTML = crearSlide(a);
+    contCat.appendChild(d);
+  });
+
+  new Swiper("#destacados-swiper", {
     slidesPerView: 3,
     spaceBetween: 30,
     loop: true,
-    autoplay: { delay: 3500 },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
+    navigation:{
+      nextEl: ".destacados-next",
+      prevEl: ".destacados-prev"
     },
-    breakpoints: {
-      320: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
+    breakpoints:{
+      320:{slidesPerView:1},
+      768:{slidesPerView:2},
+      1024:{slidesPerView:3}
+    }
+  });
+
+  new Swiper("#catalogo-swiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    navigation:{
+      nextEl: ".catalogo-next",
+      prevEl: ".catalogo-prev"
+    },
+    breakpoints:{
+      320:{slidesPerView:1},
+      768:{slidesPerView:2},
+      1024:{slidesPerView:3}
     }
   });
 });
 
-// GALERÍA
+/* ================= GALERÍA ================= */
+
 fetch("galeria.json")
 .then(r => r.json())
 .then(fotos => {
 
-  // ✅ ÚLTIMAS FOTOS AGREGADAS (toma las primeras 6 del JSON)
   const ultimas = document.getElementById("ultimas-galeria");
-  if (ultimas) {
-    ultimas.innerHTML = "";
-    fotos.slice(0, 6).forEach(link => {
-      const img = document.createElement("img");
-      img.src = link;
-      ultimas.appendChild(img);
-    });
-  }
-
   const galeria = document.getElementById("galeria-extras");
-  const btnMas = document.getElementById("btn-ver-mas");
-  const btnMenos = document.getElementById("btn-ver-menos");
+
+  const btnAbrir  = document.getElementById("btn-abrir-galeria");
+  const btnCerrar = document.getElementById("btn-cerrar-galeria");
+  const btnMas    = document.getElementById("btn-ver-mas");
+  const btnMenos  = document.getElementById("btn-ver-menos");
+
+  /* 🔥 ÚLTIMAS FOTOS (las nuevas) */
+  ultimas.innerHTML = "";
+  fotos.slice(-9).forEach(link => {
+    const img = document.createElement("img");
+    img.src = link;
+    ultimas.appendChild(img);
+  });
 
   let cantidad = 20;
 
-  function render(){
+  function renderGaleria(){
     galeria.innerHTML = "";
-
     fotos.slice(0, cantidad).forEach(link => {
       const img = document.createElement("img");
       img.src = link;
@@ -92,32 +144,26 @@ fetch("galeria.json")
     });
 
     btnMenos.style.display = cantidad > 20 ? "block" : "none";
-    btnMas.style.display = cantidad >= fotos.length ? "none" : "block";
+    btnMas.style.display   = cantidad >= fotos.length ? "none" : "block";
   }
 
-  btnMas.addEventListener("click", () => {
-    cantidad += 20;
-    render();
-  });
-
-  btnMenos.addEventListener("click", () => {
+  btnAbrir.onclick = () => {
+    document.getElementById("galeria-modal").style.display = "block";
     cantidad = 20;
-    render();
-    window.location.hash = "#galeria";
-  });
+    renderGaleria();
+  };
 
-  render();
+  btnCerrar.onclick = () => {
+    document.getElementById("galeria-modal").style.display = "none";
+  };
 
-  // ✅ MOSTRAR GALERÍA COMPLETA SOLO CUANDO TOCAN "VER GALERÍA COMPLETA"
-  const btnAbrir = document.getElementById("btn-abrir-galeria");
-  const seccionGaleria = document.getElementById("galeria");
+  btnMas.onclick = () => {
+    cantidad += 20;
+    renderGaleria();
+  };
 
-  if (btnAbrir && seccionGaleria) {
-    btnAbrir.addEventListener("click", () => {
-      seccionGaleria.style.display = "block";
-      setTimeout(() => {
-        seccionGaleria.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    });
-  }
+  btnMenos.onclick = () => {
+    cantidad = 20;
+    renderGaleria();
+  };
 });
