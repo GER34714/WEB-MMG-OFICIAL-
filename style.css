@@ -1,158 +1,199 @@
-/* style.css */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at center, #0a0a0a 40%, #1a001f 100%);
-  color: #fff;
-  text-align: center;
-  overflow-x: hidden;
+body{
+  font-family:'Poppins',sans-serif;
+  background:url("https://iili.io/KbTijol.jpg") center/cover fixed;
+  color:#fff;
 }
 
-/* Header */
-header {
-  padding: 60px 20px 20px;
-  background: linear-gradient(180deg, #000000 0%, #1a001f 100%);
-  position: relative;
-  animation: fadeIn 1.5s ease;
+/* Partículas */
+#particles-js{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
 }
 
-.logo {
-  width: 120px;
-  filter: drop-shadow(0 0 20px #d4af37);
-  animation: pulse 3s infinite;
+/* HERO */
+.hero{text-align:center;padding:60px 20px;}
+.logo{width:180px;filter:drop-shadow(0 0 30px #b97cff);}
+
+.hero-title{
+  margin-top:15px;
+  font-size:1.8rem;
+  text-shadow:0 0 25px #b97cff,0 0 45px #d4af37;
+  font-weight:700;
 }
 
-h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.3rem;
-  color: #d4af37;
-  margin-top: 10px;
+.hero-sub{
+  margin-top:10px;
+  font-size:1rem;
+  opacity:.9;
+  text-shadow:0 0 10px #b97cff;
 }
 
-.sub {
-  color: #c7c7c7;
-  font-size: 1rem;
+.menu{
+  margin-top:25px;
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.menu a{
+  text-decoration:none;
+  color:#fff;
+  padding:6px 12px;
+  background:rgba(0,0,0,0.4);
+  border-radius:12px;
+  transition:.3s;
+}
+.menu a:hover{
+  background:#b97cff;
+  box-shadow:0 0 20px #d4af37;
 }
 
-/* Artistas */
-.artistas {
-  padding: 40px 20px;
+.section{text-align:center;padding:60px 20px;}
+.titulo-seccion{
+  font-size:1.8rem;
+  margin-bottom:25px;
+  text-shadow:0 0 15px #b97cff,0 0 25px #d4af37;
 }
 
-.artistas h2 {
-  color: #d4af37;
-  font-size: 1.8rem;
-  margin-bottom: 30px;
-  font-family: 'Orbitron', sans-serif;
-  text-shadow: 0 0 10px #d4af37;
+/* ================= ARTISTAS ================= */
+.card-artista{
+  background:rgba(0,0,0,0.55);
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 0 20px rgba(185,124,255,0.4);
+  transition:.3s;
+  text-align:center;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  justify-items: center;
+.card-artista img{
+  width:100%;
+  height:230px;
+  object-fit:contain;
+  object-position:center;
+  background:#000;
+  border-radius:12px;
+  margin-bottom:20px;
 }
 
-.card {
-  background: rgba(20, 0, 30, 0.8);
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.card-artista h3{
+  margin-bottom:12px;
+  font-size:1.2rem;
+  text-shadow:0 0 10px #b97cff;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+.card-artista p{
+  font-size:0.95rem;
+  line-height:1.45em;
+  margin-bottom:25px;
+  color:#eee;
 }
 
-.card img {
-  width: 100%;
-  border-radius: 15px;
-  height: 280px;
-  object-fit: cover;
+/* BOTÓN */
+.btn-contratar{
+  background:linear-gradient(90deg,#d4af37,#ffcc70,#d4af37);
+  background-size:300% 300%;
+  color:#000;
+  border:none;
+  padding:10px 20px;
+  border-radius:30px;
+  font-weight:700;
+  cursor:pointer;
+  margin:auto;
+  display:block;
+  text-align:center;
+  box-shadow:0 0 25px rgba(212,175,55,0.7);
 }
 
-.card h3 {
-  margin: 10px 0 5px;
-  font-size: 1.3rem;
-  color: #fff;
+/* ============= INSTAGRAM CTA ============= */
+.insta-cta{
+  display:flex;
+  justify-content:center;
 }
 
-.card p {
-  font-size: 0.9rem;
-  color: #c9c9c9;
-  margin-bottom: 10px;
+.btn-instagram{
+  background:linear-gradient(90deg,#b97cff,#d4af37,#b97cff);
+  padding:15px 28px;
+  border-radius:40px;
+  color:white;
+  font-size:1.1rem;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 30px rgba(185,124,255,0.6);
+  transition:.3s;
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: linear-gradient(90deg, #d4af37, #b88a00);
-  color: #000;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
+.btn-instagram:hover{
+  transform:scale(1.07);
+  box-shadow:0 0 45px rgba(212,175,55,0.8);
 }
 
-.btn:hover {
-  background: linear-gradient(90deg, #ffcc00, #ffd84d);
+/* ================= GALERÍA ================= */
+.galeria-box{
+  background:rgba(0,0,0,0.40);
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 0 25px rgba(185,124,255,0.5);
+  width:90%;
+  margin:auto;
+  border:1px solid rgba(212,175,55,0.35);
 }
 
-/* Contacto */
-.contacto {
-  background: linear-gradient(180deg, #1a001f 0%, #000000 100%);
-  padding: 50px 20px;
-  margin-top: 40px;
+.subtitulo-galeria{
+  font-size:1.4rem;
+  margin:15px 0 25px;
+  text-shadow:0 0 10px #b97cff,0 0 15px #d4af37;
 }
 
-.contacto h2 {
-  color: #d4af37;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  font-family: 'Orbitron', sans-serif;
+.grid-galeria{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
 }
 
-.btn-principal {
-  display: inline-block;
-  padding: 15px 30px;
-  margin-top: 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  background: linear-gradient(90deg, #d4af37, #b88a00);
-  color: #000;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: background 0.3s ease;
+.grid-galeria img{
+  width:100%;
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(185,124,255,0.4);
+  transition:.3s;
 }
 
-.btn-principal:hover {
-  background: linear-gradient(90deg, #ffd84d, #ffcc00);
+.galeria-botones{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
 }
 
-footer {
-  background: #000;
-  color: #aaa;
-  padding: 20px 0;
-  font-size: 0.9rem;
+/* Footer */
+footer{
+  margin-top:60px;
+  text-align:center;
+  padding:30px;
+  background:rgba(0,0,0,0.7);
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.firma-ciborg{
+  color:#00ffff;
+  text-shadow:0 0 10px #00ffff;
 }
 
-@keyframes pulse {
-  0%, 100% { filter: drop-shadow(0 0 10px #d4af37); }
-  50% { filter: drop-shadow(0 0 25px #ffcc00); }
+/* WhatsApp */
+.whatsapp{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  width:65px;height:65px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
