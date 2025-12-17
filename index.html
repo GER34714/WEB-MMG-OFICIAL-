@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,14 +26,26 @@
   <p class="hero-sub">Shows • Booking • Contrataciones • Difusión</p>
 
   <nav class="menu">
+    <a href="#destacados">Destacados</a>
     <a href="#artistas">Artistas</a>
-    <a href="#videos">Videos</a>
+    <a href="#videos">YouTube</a>
     <a href="#instagram">Instagram</a>
     <a href="#sponsors">Sponsors</a>
     <a href="#testimonios">Testimonios</a>
+    <a href="#ultimas-fotos">Últimas fotos</a>
     <a href="#galeria">Fotos</a>
   </nav>
 </header>
+
+<!-- ================= DESTACADOS ================= -->
+<section id="destacados" class="section">
+  <h2 class="titulo-seccion">🔥 Artistas Destacados</h2>
+
+  <div class="swiper destacados-swiper">
+    <div class="swiper-wrapper" id="destacados-container"></div>
+    <div class="swiper-pagination destacados-pagination"></div>
+  </div>
+</section>
 
 <!-- ================= ARTISTAS ================= -->
 <section id="artistas" class="section">
@@ -48,11 +61,17 @@
 
 <!-- ================= VIDEO ================= -->
 <section id="videos" class="section">
-  <h2 class="titulo-seccion">🎬 Videos Oficiales / YouTube</h2>
+  <h2 class="titulo-seccion">🎬 YouTube • Canal de las Estrellas</h2>
 
-  <iframe class="youtube"
-    src="https://www.youtube.com/embed?listType=user_uploads&list=managermusicgrup1"
-    frameborder="0" allowfullscreen></iframe>
+  <div class="youtube-box">
+    <a class="youtube-cta" href="https://www.youtube.com/@CanalEstrellas" target="_blank" rel="noopener">
+      ▶️ Ver canal completo en YouTube
+    </a>
+
+    <iframe class="youtube"
+      src="https://www.youtube.com/embed?listType=user_uploads&list=UCZGYvP6WnVWGM5F0QEAyoyg"
+      frameborder="0" allowfullscreen></iframe>
+  </div>
 </section>
 
 <!-- ================= INSTAGRAM ================= -->
@@ -60,7 +79,7 @@
   <h2 class="titulo-seccion">📲 Instagram Oficial</h2>
 
   <div class="insta-cta">
-    <a href="https://www.instagram.com/managermusicgrup1" target="_blank" class="btn-instagram">
+    <a href="https://www.instagram.com/managermusicgrup1" target="_blank" class="btn-instagram" rel="noopener">
       💜 Seguir en Instagram @managermusicgrup1
     </a>
   </div>
@@ -69,8 +88,17 @@
 <!-- ================= SPONSORS ================= -->
 <section id="sponsors" class="section">
   <h2 class="titulo-seccion">🤝 Sponsors & Partners</h2>
-  <div class="sponsors-box">
-    <p>Próximamente…</p>
+
+  <div class="sponsors-grid">
+    <a class="sponsor-card" href="https://radioimagen.onrender.com/" target="_blank" rel="noopener">
+      <img src="https://iili.io/fckvHuI.jpg" alt="Radio Imagen">
+      <span>Radio Imagen</span>
+    </a>
+
+    <a class="sponsor-card" href="https://tio-sergio.onrender.com/" target="_blank" rel="noopener">
+      <img src="https://iili.io/fckkyyN.jpg" alt="Tío Sergio">
+      <span>Tío Sergio</span>
+    </a>
   </div>
 </section>
 
@@ -82,6 +110,23 @@
     <div class="test-box">"Profesionales y responsables." – Cliente</div>
     <div class="test-box">"Shows asegurados." – Productor</div>
     <div class="test-box">"Equipo increíble." – Manager</div>
+  </div>
+</section>
+
+<!-- ================= ÚLTIMAS FOTOS ================= -->
+<section id="ultimas-fotos" class="section">
+  <h2 class="titulo-seccion">🆕 Últimas fotos agregadas</h2>
+
+  <div class="galeria-box">
+    <h3 class="subtitulo-galeria">Lo más reciente</h3>
+
+    <div id="ultimas-fotos-container" class="grid-galeria"></div>
+
+    <div class="galeria-botones">
+      <a href="#galeria" class="btn-contratar btn-vermas" style="text-decoration:none; display:inline-block;">
+        📸 Ver galería completa
+      </a>
+    </div>
   </div>
 </section>
 
@@ -105,15 +150,15 @@
 <footer>
   <p>© 2025 MMG Manager Music Group™ · Página Oficial</p>
   <p>Gracias a artistas, DJs, cámaras, sonidistas, productores y a cada persona que hace posible este proyecto.</p>
-  <p>Creado y Diseñado por 
-    <a href="https://ciborg347.onrender.com" target="_blank" class="firma-ciborg">Ciborg 347™</a>
+  <p>Creado y Diseñado por
+    <a href="https://ciborg347.onrender.com" target="_blank" class="firma-ciborg" rel="noopener">Ciborg 347™</a>
   </p>
 </footer>
 
 <!-- WhatsApp -->
 <a href="https://wa.me/5491157343551?text=Hola!%20Quiero%20info%20sobre%20artistas%20MMG"
- class="whatsapp" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+ class="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp MMG">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
