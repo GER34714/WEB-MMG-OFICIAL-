@@ -1,3 +1,6 @@
+/* =========================
+     script.js (COMPLETO)
+========================= */
 particlesJS('particles-js', {
   particles:{
     number:{value:70},
@@ -125,9 +128,9 @@ fetch("galeria.json")
   const btnMas    = document.getElementById("btn-ver-mas");
   const btnMenos  = document.getElementById("btn-ver-menos");
 
-  /* 🔥 ÚLTIMAS FOTOS (las nuevas) */
+  /* 🔥 ÚLTIMAS FOTOS (SOLO 6) */
   ultimas.innerHTML = "";
-  fotos.slice(-9).forEach(link => {
+  fotos.slice(-6).forEach(link => {
     const img = document.createElement("img");
     img.src = link;
     ultimas.appendChild(img);
