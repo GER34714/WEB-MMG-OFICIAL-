@@ -73,7 +73,7 @@ body{
 .card-artista img{
   width:100%;
   height:250px;
-  object-fit:cover;
+  object-fit:contain;
   object-position:center;
   background:#000;
   border-radius:12px;
@@ -140,7 +140,8 @@ body{
 .grid-galeria img{
   width:100%;
   height:250px;
-  object-fit:cover;
+  object-fit:contain;
+  background:#000;
   border-radius:12px;
   box-shadow:0 0 20px rgba(185,124,255,0.4);
   transition:.3s;
@@ -238,4 +239,14 @@ footer{
 .btn-vermas{
   max-width:420px;
   width:100%;
+}
+
+/* Cerrar galería siempre visible */
+#galeria-modal #btn-cerrar-galeria{
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:10001;
+  max-width:260px;
+  width:auto;
 }
