@@ -23,6 +23,10 @@
   {"nombre": "Andy el Cumbiero", "img": "https://iili.io/KbxPXoP.md.jpg", "descripcion": "Es una banda y orquesta argentina liderada por Andy Olivieri, que se especializa en animar eventos privados y fiestas, especialmente conocida por ser la preferida de muchos futbolistas."},
   {"nombre": "César Agrupación Marilyn", "img": "https://iili.io/KbymkAl.md.jpg", "descripcion": "Una marca registrada en la cumbia romántica. Trayectoria y corazón."},
   {"nombre": "Arturo Jaimes y Los Cantantes", "img": "https://iili.io/fl7PPmg.jpg", "descripcion": "Leyendas de la cumbia internacional. Clásicos que siguen vigentes."},
-  {"nombre": "Los Cate", "img": "https://iili.io/fG06Len.webp", 
-"descripcion": "Cumbia chamamé con ritmo pegadizo y alegre. Ideal para levantar cualquier fiesta y hacer bailar a todos."}
+  {"nombre": "Los Cate", "img": "https://iili.io/fG06Len.webp", "descripcion": "Cumbia chamamé con ritmo pegadizo y alegre. Ideal para levantar cualquier fiesta y hacer bailar a todos."},
+  {
+    "nombre": "SUNSET",
+    "img": "https://iili.io/fVMnbF1.md.jpg",
+    "descripcion": "Música de los 80 con estilo y nostalgia. Desde Ramallo, provincia de Buenos Aires, SUNSET revive los grandes clásicos de una década inolvidable con un show ideal para fiestas, eventos y públicos de todas las edades."
+  }
 ]
